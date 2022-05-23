@@ -1,1 +1,40 @@
-<p>create-student works!</p>
+<div class="container mt-3">
+    <div class="card border-primary mb-3">
+        <div class="card-header" style="text-align: center; font-weight: bold;">Registrar Estudiante</div>
+        <div class="card-body text-primary">
+            <div class="col-md-12">
+                <form action="" method="post" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="" style="font-weight:bold ; ">Documento</label>
+                        <input type="number" class="form-control" name="document" placeholder="Ej: 96010303965" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="" style="font-weight:bold ; ">Nombres del Estudiante</label>
+                        <input type="text" class="form-control" name="names" placeholder="Ej: Pepito" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="" style="font-weight:bold ; ">Apellidos del Estudiante</label>
+                        <input type="text" class="form-control" name="lastnames" placeholder="Ej: Perez" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="" style="font-weight:bold ; ">Curso</label>
+                        <select name="course_id" id="course_id" class="form-select">
+                            <option selected disabled value="">Seleccione curso...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label for="" style="font-weight:bold ; ">Jornada</label>
+                        <select name="workday_id" id="workday_id" class="form-select">
+                            <option selected disabled value="">Seleccione Jornada...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" style="text-align:center ;">
+                        <button type="submit" class="btn btn-outline-primary" style="margin-right:10px ;">Guardar</button>
+                        <a href="" class="btn btn-outline-danger" role="button">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
