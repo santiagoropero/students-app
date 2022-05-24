@@ -7,6 +7,7 @@ import { CreateStudentComponent } from './create-student/create-student.componen
 import { ListStudentComponent } from './list-student/list-student.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentService } from './student.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { StudentService } from './student.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     StudentService

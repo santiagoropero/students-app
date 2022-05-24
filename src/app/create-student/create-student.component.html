@@ -1,37 +1,73 @@
-<div class="container mt-3">
+<div class="container mt-5">
     <div class="card border-primary mb-3">
         <div class="card-header" style="text-align: center; font-weight: bold;">Registrar Estudiante</div>
         <div class="card-body text-primary">
             <div class="col-md-12">
                 <form action="" method="post" class="row g-3">
+                    <label for="tipoDocumento" style="font-weight:bold ; ">Tipo documento</label>
                     <div class="col-md-4">
-                        <label for="" style="font-weight:bold ; ">Documento</label>
-                        <input type="number" class="form-control" name="document" placeholder="Ej: 96010303965" required>
+                      <label for="course_id" style="font-weight:bold ; ">Curso</label>
+                      <select [(ngModel)]="student.tipoDocumento" [value]="student.tipoDocumento" name="tipoDocumento" id="tipoDocumento" class="form-select">
+                        <option selected disabled value="">Seleccione Tipo documento...</option>
+                        <option value="CC">Cedula de ciudadania</option>
+                        <option value="TI">Tarjeta de identidad</option>
+                        <option value="CE">Tajeta de extranjeria</option>
+                        <option value="P">Tajeta de extranjeria</option>
+                      </select>
+                  </div>
+                    <div class="col-md-4">
+                        <label for="documento" style="font-weight:bold ; ">Documento</label>
+                        <input type="number"
+                               id="documento"
+                               class="form-control"
+                               name="documento"
+                               required
+                               [(ngModel)]="student.documento"
+                        >
                     </div>
                     <div class="col-md-4">
-                        <label for="" style="font-weight:bold ; ">Nombres del Estudiante</label>
-                        <input type="text" class="form-control" name="names" placeholder="Ej: Pepito" required>
+                        <label for="name" style="font-weight:bold ; ">Nombres del Estudiante</label>
+                        <input type="text"
+                               class="form-control"
+                               name="name"
+                               id="name"
+                               required
+                               [(ngModel)]="student.nombre"
+                        >
                     </div>
                     <div class="col-md-4">
-                        <label for="" style="font-weight:bold ; ">Apellidos del Estudiante</label>
-                        <input type="text" class="form-control" name="lastnames" placeholder="Ej: Perez" required>
+                        <label for="lastname" style="font-weight:bold ; ">Apellidos del Estudiante</label>
+                        <input type="text"
+                               class="form-control"
+                               name="lastname"
+                               id="lastname"
+                               required
+                               [(ngModel)]="student.apellido"
+                        >
                     </div>
                     <div class="col-md-4">
-                        <label for="" style="font-weight:bold ; ">Curso</label>
-                        <select name="course_id" id="course_id" class="form-select">
+                        <label for="course_id" style="font-weight:bold ; ">Curso</label>
+                        <select [(ngModel)]="student.curso" [value]="student.curso" name="course_id" id="course_id" class="form-select">
                             <option selected disabled value="">Seleccione curso...</option>
+                            <option value="Sexto">Sexto</option>
+                            <option value="Septimo">Septimo</option>
+                            <option value="Octavo">Octavo</option>
+                            <option value="Noveno">Noveno</option>
+                            <option value="Decimo">Decimo</option>
+                            <option value="Once">Once</option>
                         </select>
                     </div>
 
                     <div class="col-md-4">
-                        <label for="" style="font-weight:bold ; ">Jornada</label>
-                        <select name="workday_id" id="workday_id" class="form-select">
+                        <label for="workday_id" style="font-weight:bold ; ">Jornada</label>
+                        <select [(ngModel)]="student.jornada" [value]="student.jornada" name="workday_id" id="workday_id" class="form-select">
                             <option selected disabled value="">Seleccione Jornada...</option>
+                          <option value="Mañana">Mañana</option>
+                          <option value="Tarde">Tarde</option>
                         </select>
                     </div>
                     <div class="mb-3" style="text-align:center ;">
-                        <button type="submit" class="btn btn-outline-primary" style="margin-right:10px ;">Guardar</button>
-                        <a href="" class="btn btn-outline-danger" role="button">Cancelar</a>
+                        <button type="submit" class="btn btn-outline-primary" (click)="create()" style="margin-right:10px ;">Registrar</button>
                     </div>
                 </form>
             </div>

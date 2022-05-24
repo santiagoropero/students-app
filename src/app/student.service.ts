@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Student } from './models/student';
-import { map, tap } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,21 @@ export class StudentService {
           console.log(student.idEstudiante);
           console.log(student.nombre);
         });
+      })
+    );
+  }
+
+  create(student: Student): Observable<Student> {
+    console.log('DATOS ' , student );
+    return this.httpCliente.post(this.urlEnpoint, student, {headers: this.httpHeaders}).pipe(
+      map((response: any) => response.student as Student),
+      catchError(e => {
+        swal.fire({
+          title: 'Error al crear el estudiante',
+          text: e.error.mensaje,
+          icon: 'error'
+        });
+        return throwError(e);
       })
     );
   }
