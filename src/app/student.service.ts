@@ -35,6 +35,36 @@ export class StudentService {
     );
   }
 
+  getStudent(idStudent: number): Observable<Student> {
+    return this.httpCliente.get<Student>(`${this.urlEnpoint}/${idStudent}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/create']);
+        console.log('Error', e.error.mensaje);
+        swal.fire({
+          title: 'Error al buscar el estudiante',
+          text: e.error.mensaje,
+          icon: 'error'
+        });
+        return throwError(e);
+      })
+    );
+  }
+
+  update(student: Student): Observable<Student> {
+    return this.httpCliente.put(`${this.urlEnpoint}/${student.idEstudiante}`, student, {headers: this.httpHeaders}).pipe(
+      map((response: any) => response.student as Student),
+      catchError(e => {
+        swal.fire({
+          title: 'Error al actualizar el estudiante',
+          text: e.error.mensaje,
+          icon: 'error'
+        });
+        return throwError(e);
+      })
+    );
+  }
+
+
   create(student: Student): Observable<Student> {
     console.log('DATOS ' , student );
     return this.httpCliente.post(this.urlEnpoint, student, {headers: this.httpHeaders}).pipe(

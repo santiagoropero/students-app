@@ -66,9 +66,17 @@
                           <option value="Tarde">Tarde</option>
                         </select>
                     </div>
+
                     <div class="mb-3" style="text-align:center ;">
-                        <button type="submit" class="btn btn-outline-primary" (click)="create()" style="margin-right:10px ;">Registrar</button>
+                        <button type="submit" class="btn btn-outline-primary" *ngIf="!student.idEstudiante else elseBlock" (click)="create()" style="margin-right:10px ;">Registrar</button>
                     </div>
+                  <ng-template #elseBlock>
+
+                    <div class="col-12 mt-5">
+                      <button class="btn btn-primary btn-block" (click)="update()">Actualizar</button>
+                    </div>
+
+                  </ng-template>
                 </form>
             </div>
         </div>
