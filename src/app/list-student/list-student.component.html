@@ -1,33 +1,32 @@
-<div class="container mt-3">
-  <div class="card border-primary mb-3">
-    <div class="card-header">Estudiantes</div>
-    <div class="card-body text-primary">
+<div class="container mt-5">
       <h5 class="card-title">Listado de estudiantes</h5>
       <div class="my-2 text-left">
         <button type="button" class="btn btn-primary" [routerLink]="['/clientes/form']">Crear estudiante</button>
       </div>
-      <div class="alert alert-info">
+      <div *ngIf="listStudents?.length === 0" class="alert alert-info">
         No hay registros en la base de datos.
       </div>
       <table aria-describedby class="table">
         <thead>
         <tr>
-          <th scope="col">ID</th>
+          <th scope="col">Tipo Documento</th>
+          <th scope="col">N° Documento</th>
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
-          <th scope="col">Correo</th>
-          <th scope="col">Fecha Creación</th>
+          <th scope="col">Curso</th>
+          <th scope="col">Jornada</th>
           <th scope="col">Editar</th>
           <th scope="col">Eliminar</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td><button type="button" class="btn btn-success"></button></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor="let student of listStudents">
+          <td>{{ student.tipoDocumento }}</td>
+          <td>{{ student.documento }}</td>
+          <td>{{ student.nombre }}</td>
+          <td>{{ student.apellido }}</td>
+          <td>{{ student.curso }}</td>
+          <td>{{ student.jornada }}</td>
           <td>
             <button type="button" class="btn btn-primary">Editar</button>
           </td>
@@ -37,6 +36,4 @@
         </tr>
         </tbody>
       </table>
-    </div>
   </div>
-</div>
