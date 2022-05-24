@@ -79,4 +79,18 @@ export class StudentService {
       })
     );
   }
+
+  delete(idStudent: number): Observable<Student> {
+    return this.httpCliente.delete<Student>(`${this.urlEnpoint}/${idStudent}`, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        swal.fire({
+          title: 'Error al eliminar el estudiante',
+          text: e.error.mensaje,
+          icon: 'error'
+        });
+        return throwError(e);
+      })
+    );
+  }
+
 }
